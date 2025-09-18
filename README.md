@@ -5,6 +5,15 @@
 ## 项目结构
 
 ```
+├── axum_web_demo/   # Web服务器项目（已完成）
+│   ├── .cargo/
+│   │   └── config.toml
+│   ├── .gitignore
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── README.md
+│   └── src/
+│       └── main.rs
 ├── calculator_cli/  # 命令行计算器项目（已完成）
 │   ├── .gitignore
 │   ├── Cargo.lock
@@ -19,7 +28,50 @@
 
 ## 项目列表
 
-### 1. calculator_cli - 命令行计算器
+### 1. axum_web_demo - Web服务器项目
+
+一个基于axum框架的简单Web服务器项目，展示了如何使用Rust构建HTTP服务。
+
+#### 功能特性
+- 基本的HTTP路由处理
+- 响应"Hello, World!"请求
+- 日志记录和追踪功能
+- 支持构建Linux可执行文件
+
+#### 使用方法
+
+```bash
+# 构建项目
+cd axum_web_demo
+cargo build --release
+
+# 运行服务器
+cargo run
+
+# 访问服务
+curl http://localhost:3000
+# 输出: Hello, World!
+```
+
+#### 构建Linux可执行文件
+
+```bash
+# 确保已安装musl-cross工具链
+# 构建Linux可执行文件
+cd axum_web_demo
+cargo build --target x86_64-unknown-linux-musl --release
+
+# 可执行文件位置
+# target/x86_64-unknown-linux-musl/release/axum_web_demo
+```
+
+#### 实现细节
+- 使用axum 0.8.4作为Web框架
+- 使用hyper 1.0作为HTTP库
+- 使用tracing和tracing-subscriber进行日志记录
+- 配置了交叉编译支持
+
+### 2. calculator_cli - 命令行计算器
 
 一个简单的命令行计算器，可以执行基本的算术运算。
 
@@ -53,7 +105,7 @@ cargo build --release
 - 使用结构体和方法组织代码
 - 包含完整的错误处理逻辑
 
-### 2. jsonfmt - JSON格式化工具（开发中）
+### 3. jsonfmt - JSON格式化工具（开发中）
 
 一个用于格式化JSON文件的命令行工具，目前正在开发中。
 
@@ -96,8 +148,9 @@ cargo build --release
 1. 完成jsonfmt项目的开发
 2. 添加新的Rust项目，包括但不限于：
    - 文件操作工具
-   - 简单的Web服务
    - 数据结构和算法的实现
+   - 数据库交互应用
+   - 异步编程示例
 
 ## 关于作者
 
