@@ -1,28 +1,38 @@
-use std::io::{self, BufRead};
+use std::fs;
+use clap::Parser;
+use jsonfmt::command_utils::{usage_read, Args};
+use jsonfmt::json_utils::{is_valid_json, to_minify_json, to_pretty_json};
 
 fn main() {
-    println!("程序开始执行");
-    println!("创建stdin().lines()迭代器（这一步不会阻塞）");
-    
-    // 只是创建迭代器，不会阻塞
-    let input = io::stdin().lines();
-    
-    println!("迭代器已创建: {:?}", input);
-    println!("现在尝试从迭代器中读取数据（这一步会阻塞）...");
-    
-    // 当实际尝试读取数据时才会阻塞
-    for line_result in input {
-        match line_result {
-            Ok(line) => {
-                println!("收到输入: {}", line);
-                break; // 只读取一行
-            },
-            Err(e) => {
-                println!("读取错误: {}", e);
-                break;
-            }
-        }
+    let args = usage_read(Args::parse());
+
+    let input = args.input.expect("input should not be None here");
+    let with_indent = args.indent;
+    let minify = args.minify;
+    let output = args.output.unwrap_or("".to_string());
+    let validate = args.validate;
+
+    if validate {
+        println!("您输入的json文本{}有效json数据", if is_valid_json(&input) {"是"} else {"不是"});
+        return;
     }
-    
-    println!("程序继续执行并退出");
+
+    let input = if !minify {
+        to_pretty_json(&input, with_indent)
+    } else {
+        to_minify_json(&input)
+    }.unwrap_or_else(|err| {
+        eprintln!("json解析错误: {}", err);
+        std::process::exit(1);
+    });
+
+    if output != "".to_string() {
+        match fs::write(&output, input) {
+            Ok(_) => println!("格式化结构已写入 {}", output),
+            Err(e) => eprintln!("{}文件写入失败: {}", output, e),
+        }
+    } else {
+        println!("{}", input);
+    }
+
 }
