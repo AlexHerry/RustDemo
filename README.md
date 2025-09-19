@@ -5,7 +5,7 @@
 ## 项目结构
 
 ```
-├── axum_web_demo/   # Web服务器项目（已完成）
+├── axum_web_demo/   # Web服务器项目（未完成）
 │   ├── .cargo/
 │   │   └── config.toml
 │   ├── .gitignore
@@ -20,10 +20,17 @@
 │   ├── Cargo.toml
 │   └── src/
 │       └── main.rs
-└── jsonfmt/         # JSON格式化工具项目（开发中）
+└── jsonfmt/         # JSON格式化工具项目（已完成）
+    ├── .gitignore
+    ├── Cargo.lock
     ├── Cargo.toml
-    └── src/
-        └── main.rs
+    ├── src/
+    │   ├── command_utils.rs
+    │   ├── json_utils.rs
+    │   ├── lib.rs
+    │   └── main.rs
+    └── static/
+        └── test.json
 ```
 
 ## 项目列表
@@ -105,18 +112,55 @@ cargo build --release
 - 使用结构体和方法组织代码
 - 包含完整的错误处理逻辑
 
-### 3. jsonfmt - JSON格式化工具（开发中）
+### 3. jsonfmt - JSON格式化工具（已完成）
 
-一个用于格式化JSON文件的命令行工具，目前正在开发中。
+一个功能完整的命令行JSON格式化工具，可以美化、压缩和验证JSON数据。
 
-#### 计划功能
-- 从文件或标准输入读取JSON数据
-- 格式化JSON输出（支持缩进、换行等）
-- 支持自定义缩进空格数
-- 错误处理和JSON验证
+#### 功能特性
+- **多源输入支持**：从文件、标准输入或直接字符串读取JSON
+- **多种输出格式**：美化（带缩进和换行）或压缩（紧凑）JSON
+- **自定义缩进**：支持1-32个空格的自定义缩进
+- **JSON验证**：检查输入是否为有效的JSON格式
+- **输出重定向**：支持将结果保存到指定文件
+- **管道支持**：与其他命令配合使用（如`curl https://api.example.com/data | jsonfmt -`）
+- **友好的命令行界面**：详细的帮助信息和使用指南
 
-#### 开发状态
-目前项目仅包含基础框架，计划逐步实现上述功能。
+#### 使用方法
+
+```bash
+# 安装项目
+cd jsonfmt
+cargo build --release
+
+# 基本使用 - 格式化JSON文件
+./target/release/jsonfmt data.json
+
+# 将格式化后的JSON保存到文件
+./target/release/jsonfmt data.json --output formatted.json
+
+# 自定义缩进（4个空格，默认为4）
+./target/release/jsonfmt data.json --indent 2
+
+# 压缩JSON（移除所有空格和换行）
+./target/release/jsonfmt data.json --minify
+
+# 仅验证JSON有效性（不输出格式化结果）
+./target/release/jsonfmt data.json --validate
+
+# 从标准输入读取（适用于管道操作）
+cat data.json | ./target/release/jsonfmt -
+
+# 使用curl获取API响应并格式化
+curl -s https://api.example.com/data | ./target/release/jsonfmt -
+```
+
+#### 实现细节
+- 使用**clap**库实现强大的命令行参数解析
+- 使用**serde_json**库进行JSON解析和格式化
+- 使用**atty**库检测输入源类型（终端或管道）
+- 模块化设计，将命令行处理和JSON操作分离为独立模块
+- 包含完整的错误处理和用户友好的错误信息
+- 支持中文输出和提示信息
 
 ## 如何构建和运行
 
