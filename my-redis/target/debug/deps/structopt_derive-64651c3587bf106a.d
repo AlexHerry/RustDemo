@@ -1,0 +1,10 @@
+/Users/ryan/code/Study/rust/rust_demo/my-redis/target/debug/deps/structopt_derive-64651c3587bf106a.d: /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/lib.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/attrs.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/doc_comments.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/parse.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/spanned.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/ty.rs
+
+/Users/ryan/code/Study/rust/rust_demo/my-redis/target/debug/deps/libstructopt_derive-64651c3587bf106a.dylib: /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/lib.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/attrs.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/doc_comments.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/parse.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/spanned.rs /Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/ty.rs
+
+/Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/lib.rs:
+/Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/attrs.rs:
+/Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/doc_comments.rs:
+/Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/parse.rs:
+/Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/spanned.rs:
+/Users/ryan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/structopt-derive-0.4.18/src/ty.rs:
