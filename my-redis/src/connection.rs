@@ -57,6 +57,7 @@ impl Connection {
         }
     }
 
+    #[warn(dead_code)]
     async fn write_frame(&mut self, frame: Frame) -> Result<()>
     {
         match frame {
@@ -93,6 +94,7 @@ impl Connection {
         Ok(())
     }
 
+    #[warn(dead_code)]
     async fn write_decimal(&mut self, val: u64) -> Result<()> {
         use std::io::Write;
 
