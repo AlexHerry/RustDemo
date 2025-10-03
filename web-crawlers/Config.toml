@@ -1,0 +1,4 @@
+[target]
+url = "https://picsum.photos/v2/list?limit=100&page="
+page = 5
+task_num = 10
